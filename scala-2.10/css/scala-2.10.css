@@ -13,8 +13,7 @@
 
 
 /*.deck-container.on-slide-1.*,
-.slide.days.slide-1
-{
+.slide.days.slide-1 {
   background-size: 100%;
   background-color: #7fdff9;
   color: #e5554d;
@@ -30,12 +29,12 @@
     box-flex: 0;
 }
 
-.keydown.deck-container {
-  background-color: white;
+/*.keydown.deck-container {
+  background-color: #FBFBDD;
 }
 .keydown.deck-container .slide {
-  background-color: white;
-}
+  background-color: #FBFBDD;
+}*/
 
 .csstransforms .deck-container .slide h1 {
   padding-top: 10px;
@@ -46,12 +45,13 @@
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
   font-weight: 400;
-  background-color: #7bdcf5;
+  background-color: #1b5c95;
   padding-bottom: 200px;
-  margin-left: -1000px;
-  border-left: 1000px solid #7bdcf5;
-  margin-right: -10000px;
-  border-right: 10000px solid #7bdcf5;
+  margin-left: -2000px;
+  border-left: 2000px solid #1b5c95;
+  margin-right: -2000px;
+  border-right: 2000px solid #1b5c95;
+  text-shadow: 2px 2px 5px black;
 }
 
 .deck-container .slide .CodeMirror {
@@ -68,10 +68,10 @@
 }
 
 .deck-container .slide .CodeMirror pre {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 .deck-container .slide .CodeMirror {
-    line-height: 1.5em;
+    line-height: 2.5em;
     font-family: monospace;
 }
 
@@ -96,7 +96,7 @@
 }
 
 .slide.intro h4 {
-  color: white;
+  /*color: white;*/
   color: #aaa;
   position: absolute;
   bottom: 5px;
