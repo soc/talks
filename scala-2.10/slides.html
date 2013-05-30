@@ -67,6 +67,13 @@
     <section class='left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
+        <h1>Komplexitätsbudget</h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
         <h1>Scala</h1>
         
         <p>Diagramm StackOverflow/GitHub</p>
@@ -90,7 +97,32 @@
     <section class='left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Methoden <em>und</em> Operatoren?</h1>
+        <h1>Die Ungleichung ...</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>def add(a: Int, b: Int) { a + b }&#x000A;println("Ergebnis: " + add(42, 23))</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Abstrakte Methoden in Traits</h1>
+        
+        <ul>
+        <li>Wenn der Rückgabewert nicht inferiert werden kann, muss er angegeben werden</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>trait Foo {&#x000A;  def foo(): Unit&#x000A;}&#x000A;&#x000A;trait Bar {&#x000A;  def bar()&#x000A;}</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Methoden <em>und</em> Operatoren</h1>
         
         <ul>
         <li>Fast freie <strong>Methodenbenennung</strong></li>
@@ -155,6 +187,13 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
+    <section class='conclusion left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Fazit: Weniger ist mehr!</h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
     <section class='left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
@@ -175,11 +214,48 @@
         <p><textarea class='code' display='none' mode='text/x-scala'>val (one, two) = (1, 2)</textarea>
     </p>
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>//</textarea>
+        <p><textarea class='code' display='none' mode='text/x-scala'>val 1 = 2</textarea>
     </p>
         
         <p><textarea class='code' display='none' mode='text/x-scala'>case class Person(firstName: String,&#x000A;                  lastName:  String)&#x000A;&#x000A;val joe = Person("Joe", "Gulasch")&#x000A;val Person(firstName, _) = joe</textarea>
     </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Optimistische APIs</h1>
+        
+        <ul>
+        <li>Was passiert, wenn man vergisst das Verhalten im Fehlerfall zu spezifizieren?</li>
+        <li>ListBuffer? (Rekursives off-by-one)</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Optimistische APIs (Multi-threaded version)</h1>
+        
+        <ul>
+        <li>CompositeThrowable</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>def failOnce(i: Int) =&#x000A;  if (i == 42) throw new RuntimeException(s"Failed: $i")&#x000A;  else i&#x000A;(1 to 1000).map(failOnce)</textarea>
+    </p>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>def failOften(i: Int) =&#x000A;  if (i % 42 == 0) throw new RuntimeException(s"Failed: $i")&#x000A;  else i&#x000A;(1 to 1000).map(failOften)</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Optimistische APIs</h1>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -202,6 +278,17 @@
         
         <p><textarea class='code' display='none' mode='text/x-scala'>/** This class turns a regular expression&#x000A;  * over `A` into a `NondetWordAutom` over&#x000A;  * `A` using the celebrated position&#x000A;  * automata construction (also called &#x000A;  * ''Berry-Sethi'' or ''Glushkov'').&#x000A;  */&#x000A;abstract class BaseBerrySethi</textarea>
     </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Sprache -> Bibliothek</h1>
+        
+        <p>classOf
+        isInstanceOf
+        asInstanceOf</p>
       </div>
       <div class='spacer bottom'></div>
     </section>

@@ -23,6 +23,9 @@ Kriegsgeschichten aus Sprach- und Bibliotheksdesign <br />
   * Was kann man daraus lernen?
 
 !SLIDE left top
+# Komplexitätsbudget
+
+!SLIDE left top
 # Scala
 
 Diagramm StackOverflow/GitHub
@@ -36,7 +39,51 @@ Diagramm StackOverflow/GitHub
   * Prozesse
 
 !SLIDE left top
-# Methoden *und* Operatoren?
+# Die Ungleichung ...
+
+``` text/x-scala
+def add(a: Int, b: Int) { a + b }
+println("Ergebnis: " + add(42, 23))
+```
+
+!NOTE
+# Methoden *und* Prozeduren
+
+  * Methoden:
+
+``` text/x-scala
+def add(a: Int, b: Int) = a + b
+add(42, 23)
+```
+
+  * Methoden ohne Rückgabewert heißen Prozeduren
+  * Prozeduren haben den Rückgabetyp `Unit` (~`void`)
+  * 3 verschiedene, equivalente Deklarationmöglichkeiten
+
+``` text/x-scala
+def printHello1() { println("Hello") }
+def printHello2() = println("Hello")
+def printHello3(): Unit = { println("Hello") }
+```
+
+!SLIDE left top
+# Abstrakte Methoden in Traits
+
+  * Wenn der Rückgabewert nicht inferiert werden kann, muss er angegeben werden
+
+``` text/x-scala
+trait Foo {
+  def foo(): Unit
+}
+
+trait Bar {
+  def bar()
+}
+```
+
+
+!SLIDE left top
+# Methoden *und* Operatoren
 
   * Fast freie **Methodenbenennung**
   * Methoden mit einem Argument können **Operator-Notation** nutzen
@@ -89,6 +136,9 @@ val linefeed = "\\u000A"
 print(linefeed)
 ```
 
+!SLIDE left top conclusion
+# Fazit: Weniger ist mehr!
+
 !SLIDE left top
 # Statische Methoden
 
@@ -103,7 +153,7 @@ val (one, two) = (1, 2)
 ```
 
 ``` text/x-scala
-//
+val 1 = 2
 ```
 
 ``` text/x-scala
@@ -113,6 +163,35 @@ case class Person(firstName: String,
 val joe = Person("Joe", "Gulasch")
 val Person(firstName, _) = joe
 ```
+
+!SLIDE left top
+# Optimistische APIs
+
+ * Was passiert, wenn man vergisst das Verhalten im Fehlerfall zu spezifizieren?
+ * ListBuffer? (Rekursives off-by-one)
+
+!SLIDE left top
+# Optimistische APIs (Multi-threaded version)
+
+ * CompositeThrowable
+
+``` text/x-scala
+
+def failOnce(i: Int) =
+  if (i == 42) throw new RuntimeException(s"Failed: $i")
+  else i
+(1 to 1000).map(failOnce)
+```
+
+``` text/x-scala
+def failOften(i: Int) =
+  if (i % 42 == 0) throw new RuntimeException(s"Failed: $i")
+  else i
+(1 to 1000).map(failOften)
+```
+
+!SLIDE left top
+# Optimistische APIs
 
 !SLIDE left top
 #Testing/Dokumentation/Reflection
@@ -140,6 +219,14 @@ abstract class Document
   */
 abstract class BaseBerrySethi
 ```
+
+!SLIDE left top
+#Sprache -> Bibliothek
+
+classOf
+isInstanceOf
+asInstanceOf
+
 
 !SLIDE left top
 #Kompatibilität
