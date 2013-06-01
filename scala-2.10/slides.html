@@ -40,7 +40,29 @@
     <section class='left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Ich</h1>
+        <h1>Was ist Scala?</h1>
+        
+        <p><strong>Objektorientiert und funktional</strong></p>
+        
+        <p><em>“A drunken Martin Odersky sees a Reese's Peanut Butter Cup ad featuring somebody's peanut butter getting on somebody else's chocolate and has an idea.<br /> He creates Scala, a language that unifies constructs from both object oriented and functional languages. This pisses off both groups and each promptly declares jihad.”</em> ¹</p>
+        
+        <p><small>¹ A Brief, Incomplete, and Mostly Wrong History of Programming Languages</p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Was ist Scala?</h1>
+        
+        <p><strong>Objektorientiert und funktional</strong></p>
+        
+        <p><strong>Statisch typisiert, mit lokaler Typinferenz</strong></p>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>val hi: String = "Hallo GPN!"</textarea>
+    </p>
+        
+        <p><strong>Kompiliert zu JVM-Bytecode</strong></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
@@ -67,95 +89,148 @@
     <section class='left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
+        <h1>The Three Laws of <br/> Programming Language Design</h1>
+        
+        <p>Joe Armstrong:</p>
+        
+        <ul>
+        <li><em>What you get right nobody mentions</em></li>
+        <li><em>What you get wrong, people bitch about</em></li>
+        <li><em>What is difficult to understand you have to explain to people over and over again</em></li>
+        </ul>
+        
+        
+        <br />
+        
+        
+        <p>Wir beschäftigen uns mit den letzten beiden Punkten</p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
         <h1>Komplexitätsbudget</h1>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Scala</h1>
-        
-        <p>Diagramm StackOverflow/GitHub</p>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Kapitel</h1>
         
         <ul>
-        <li>Sprache</li>
-        <li>Bibliothek</li>
-        <li>Werkzeuge</li>
-        <li>Prozesse</li>
+        <li>Die Suche nach effizienten Investitionen</li>
+        <li>Kombinierbarkeit von Sprachfeatures erhöht Komplexität</li>
         </ul>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='green slide'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Die Ungleichung ...</h1>
+        <h1>„Nur noch <em>ein</em> Feature, versprochen!“</h1>
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>def add(a: Int, b: Int) { a + b }&#x000A;println("Ergebnis: " + add(42, 23))</textarea>
+        <p><img height="50%" src="images/wettessen.jpg"/></p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='green left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Die verflixte Un<strong>gleich</strong>ung ...</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>// Multipliziere a und b:&#x000A;def multiply(a: Int, b: Int) { a * b }&#x000A;&#x000A;// Addiere a und b:&#x000A;def add(a: Int, b: Int) = { a + b }&#x000A;&#x000A;// Wir prüfen Ergebnis von (5 + 2) * 3:&#x000A;val result =&#x000A;  (5 + 2) * 3 == multiply(add(5, 2), 3)</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='green left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Abstrakte Methoden in Traits</h1>
+        <h1>... ist eine <strong>Prozedur</strong></h1>
         
         <ul>
-        <li>Wenn der Rückgabewert nicht inferiert werden kann, muss er angegeben werden</li>
+        <li>Methoden ohne Rückgabewert heißen Prozeduren</li>
+        <li>Prozeduren haben den Rückgabetyp <code>Unit</code> (<code>void</code>)</li>
+        <li>Verschiedene, äquivalente Deklarationsmöglichkeiten</li>
         </ul>
         
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>trait Foo {&#x000A;  def foo(): Unit&#x000A;}&#x000A;&#x000A;trait Bar {&#x000A;  def bar()&#x000A;}</textarea>
+        <p><textarea class='code' display='none' mode='text/x-scala'>def foo1() { 1 + 2 }&#x000A;def foo2() = 1 + 2&#x000A;def foo3(): Unit = { 1 + 2 }</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='green left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Methoden <em>und</em> Operatoren</h1>
+        <h1>Methoden in Interfaces</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>trait ExampleInterface {&#x000A;  def add(a: Int, b: Int): Int&#x000A;  def foo() // <-- Fehlt hier nicht was?&#x000A;}</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='green left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Operatoren ...</h1>
         
         <ul>
-        <li>Fast freie <strong>Methodenbenennung</strong></li>
+        <li>Lesbarkeit</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>1 + 2 * 3 / 4 - 5&#x000A;minus(add(1, divide(multiply(2, 3), 4)) - 5)</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='green left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>... oder „sybolische Methodennamen“?</h1>
+        
+        <ul>
+        <li>Scalas Ansatz:
+        
+        <ul>
+        <li>(Fast) freie <strong>Methodenbenennung</strong></li>
+        </ul>
+        </li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>// "Madonna wearing a button-down shirt" operator&#x000A;// oder auch "Angry Donkey" operator&#x000A;def <:< = ???</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='green left slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>... oder „sybolische Methodennamen“?</h1>
+        
+        <ul>
+        <li>Scalas Ansatz:
+        
+        <ul>
+        <li>(Fast) freie <strong>Methodenbenennung</strong></li>
         <li>Methoden mit einem Argument können <strong>Operator-Notation</strong> nutzen</li>
         </ul>
-        
-        
-        <p><textarea class='code' display='none' mode='text/x-scala'>val three: Int = 1 + 2&#x000A;def hello = "Hello GPN".take(5)</textarea>
-    </p>
-        
-        <p><textarea class='code' display='none' mode='text/x-scala'>val three: Int = 1.+(2)&#x000A;def hello = "Hello GPN" take 5</textarea>
-    </p>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Die Sache mit dem <strong>Doppelpunkt</strong> …</h1>
-        
-        <ul>
-        <li>Wenn eine Methode mit <code>:</code> endet, …</li>
-        <li>… dann ist sie <strong>rechts</strong>assoziativ …</li>
-        <li>… aber nur in <strong>Operator-Notation</strong>!</li>
+        </li>
         </ul>
         
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>val list1 =  1  :: 2  :: 3  :: Nil&#x000A;&#x000A;val list2 = Nil.::(3).::(2).::(1)&#x000A;&#x000A;assert(list1 == list2)</textarea>
+        <p><textarea class='code' display='none' mode='text/x-scala'>val hello = "Hello GPN".take(5)</textarea>
+    </p>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>val hello = "Hello GPN" take 5</textarea>
+    </p>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>val three: Int = 1 + 2</textarea>
+    </p>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>val three: Int = 1.+(2)</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='slide'>
+    <section class='green slide'>
       <div class='spacer top'></div>
       <div class='content'>
         <h1>Die Sache mit dem <strong>Doppelpunkt</strong> …</h1>
@@ -164,10 +239,55 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='green left slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Oktale Literale</h1>
+        <h1>Die Sache mit dem <strong>Doppelpunkt</strong> …</h1>
+        
+        <ul>
+        <li>Wenn eine Methode mit <code>:</code> endet, …
+        
+        <ul>
+        <li>dann ist sie <strong>rechts</strong>assoziativ …</li>
+        <li>aber nur in <strong>Operator-Notation</strong>!</li>
+        </ul>
+        </li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>val list1 =  1  :: 2  :: 3  :: Nil&#x000A;&#x000A;val list2 = Nil.::(3).::(2).::(1)&#x000A;&#x000A;assert(list1 == list2)</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='green slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1><br/><strong>Fazit</strong><br/>Weniger ist oft mehr!<br/><br/></h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='purple slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>„Ach, war Java schön!“</h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left purple slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Da ist jeder Kommentar überflüssig ...</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>// Note: \u000A is Unicode for linefeed (LF)&#x000A;val linefeed = "\u000A"&#x000A;print(linefeed)</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left purple slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Oktales</h1>
         
         <p><textarea class='code' display='none' mode='text/x-scala'>val bond = 007</textarea>
     </p>
@@ -177,171 +297,616 @@
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='left purple slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Java?</h1>
+        <h1>Constant inlining</h1>
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>// Note: \u000A is Unicode for linefeed (LF)&#x000A;val linefeed = "\u000A"&#x000A;print(linefeed)</textarea>
+        <p><textarea class='code' display='none' mode='text/x-scala'>// Datei A:&#x000A;final val foo = 42&#x000A;&#x000A;//Datei B:&#x000A;def getFoo = foo</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='conclusion left slide top'>
+    <section class='left purple slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Fazit: Weniger ist mehr!</h1>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Statische Methoden</h1>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Konstruktoren und Extraktoren</h1>
+        <h1>Constant inlining</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>// Datei A:&#x000A;final val foo = 42&#x000A;&#x000A;//Datei B:&#x000A;def getFoo = foo</textarea>
+    </p>
         
         <ul>
-        <li><code>unapply</code></li>
+        <li>Tauscht Laufzeitabhängigkeit gegen Compilezeitabhängigkeit</li>
         </ul>
-        
-        
-        <p><textarea class='code' display='none' mode='text/x-scala'>val (one, two) = (1, 2)</textarea>
-    </p>
-        
-        <p><textarea class='code' display='none' mode='text/x-scala'>val 1 = 2</textarea>
-    </p>
-        
-        <p><textarea class='code' display='none' mode='text/x-scala'>case class Person(firstName: String,&#x000A;                  lastName:  String)&#x000A;&#x000A;val joe = Person("Joe", "Gulasch")&#x000A;val Person(firstName, _) = joe</textarea>
-    </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='left purple slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Constant inlining</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>// Datei A:&#x000A;final val foo = 42&#x000A;&#x000A;//Datei B:&#x000A;def getFoo = foo</textarea>
+    </p>
+        
+        <ul>
+        <li>Tauscht Laufzeitabhängigkeit gegen Compilezeitabhängigkeit</li>
+        <li>Kein Performancegewinn zur Laufzeit</li>
+        <li>Erhöhte Compilezeit</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='purple slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1><br/><strong>Fazit</strong><br/>Anlehnung an andere Sprachen hat Vor- und Nachteile<br/><br/></h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='pink slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>“Jede Menge Platz in der Bibliothek?”</h1>
+        
+        <p><img src="images/buecherhaufen.jpg"/></p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left pink slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Namensvetter beim Familientreffen</h1>
+        
+        <p><img width="700px" src="images/futures.png"/></p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left pink slide top'>
       <div class='spacer top'></div>
       <div class='content'>
         <h1>Optimistische APIs</h1>
         
         <ul>
-        <li>Was passiert, wenn man vergisst das Verhalten im Fehlerfall zu spezifizieren?</li>
-        <li>ListBuffer? (Rekursives off-by-one)</li>
-        </ul>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Optimistische APIs (Multi-threaded version)</h1>
+        <li>Was passiert, wenn man vergisst, das Verhalten im Fehlerfall zu spezifizieren?</li>
+        <li>Methode <code>remove</code> akzeptiert zwei Argumente
         
         <ul>
-        <li>CompositeThrowable</li>
+        <li>Position, ab der Elemente enfernt werden</li>
+        <li>Anzahl der zu entfernenden Elemente</li>
+        </ul>
+        </li>
         </ul>
         
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>def failOnce(i: Int) =&#x000A;  if (i == 42) throw new RuntimeException(s"Failed: $i")&#x000A;  else i&#x000A;(1 to 1000).map(failOnce)</textarea>
-    </p>
-        
-        <p><textarea class='code' display='none' mode='text/x-scala'>def failOften(i: Int) =&#x000A;  if (i % 42 == 0) throw new RuntimeException(s"Failed: $i")&#x000A;  else i&#x000A;(1 to 1000).map(failOften)</textarea>
+        <p><textarea class='code' display='none' mode='text/x-scala'>import scala.collection.mutable.ListBuffer&#x000A;val buf = ListBuffer(1, 2, 3)&#x000A;buf remove (4, 4) // <-- Datenstruktur korrumpiert!</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='left pink slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Optimistische APIs</h1>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Testing/Dokumentation/Reflection</h1>
+        <h1>Parallele Albträume</h1>
         
-        <p><code>scala.mobile</code></p>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Doku ≠ Doku</h1>
+        <ul>
+        <li>Datenstrukturen implementieren die Collection API</li>
+        <li>Collection API unterstützt sequentielle und parallele Operationen</li>
+        </ul>
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>/** A basic pretty-printing library, based&#x000A;  * on Lindig's strict version of Wadler's&#x000A;  * adaptation of Hughes' pretty-printer.&#x000A;  */&#x000A;abstract class Document</textarea>
-    </p>
         
-        <p><textarea class='code' display='none' mode='text/x-scala'>/** This class turns a regular expression&#x000A;  * over `A` into a `NondetWordAutom` over&#x000A;  * `A` using the celebrated position&#x000A;  * automata construction (also called &#x000A;  * ''Berry-Sethi'' or ''Glushkov'').&#x000A;  */&#x000A;abstract class BaseBerrySethi</textarea>
+        <p><textarea class='code' display='none' mode='text/x-scala'>def twice(i: Int) = i * 2&#x000A;&#x000A;(1 to 1000) map twice</textarea>
     </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='left pink slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Sprache -> Bibliothek</h1>
+        <h1>Parallele Albträume</h1>
         
-        <p>classOf
-        isInstanceOf
-        asInstanceOf</p>
+        <ul>
+        <li>Datenstrukturen implementieren die Collection API</li>
+        <li>Collection API unterstützt sequentielle und parallele Operationen</li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>def twice(i: Int) = i * 2&#x000A;&#x000A;(1 to 1000) map twice</textarea>
+    </p>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>def brokenTwice(i: Int) =&#x000A;  if (i%42 == 0)&#x000A;    throw new RuntimeException(s"Failed: $i")&#x000A;  else i * 2&#x000A;&#x000A;(1 to 1000) map brokenTwice</textarea>
+    </p>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='left slide top'>
+    <section class='left pink slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Parallele Albträume</h1>
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>def brokenTwice(i: Int) =&#x000A;  if (i%42 == 0)&#x000A;    throw new RuntimeException(s"Failed: $i")&#x000A;  else i * 2&#x000A;&#x000A;(1 to 1000).par map brokenTwice</textarea>
+    </p>
+        
+        <ul>
+        <li>Parallele Operationen mit mehreren Fehlschlägen?
+        
+        <ul>
+        <li>Welche und wie viele Exceptions werden gemeldet?</li>
+        </ul>
+        </li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>class CompositeThrowable(exceptions: Set[Exception])</textarea>
+    </p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left pink slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Parallele Albträume</h1>
+        
+        <ul>
+        <li>Parallele Operationen mit mehreren Fehlschlägen:
+        
+        <ul>
+        <li>Welche und wie viele Exceptions werden gemeldet?</li>
+        </ul>
+        </li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>class CompositeThrowable(exceptions: Set[Exception])</textarea>
+    </p>
+        
+        <ul>
+        <li>Wenn mehr als eine Exception auftritt, dann wird in <code>CompositeThrowable</code> ge-„wrappt“</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left pink slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Parallele Albträume</h1>
+        
+        <ul>
+        <li>Parallele Operationen mit mehreren Fehlschlägen:
+        
+        <ul>
+        <li>Welche und wie viele Exceptions werden gemeldet?</li>
+        </ul>
+        </li>
+        </ul>
+        
+        
+        <p><textarea class='code' display='none' mode='text/x-scala'>class CompositeThrowable(exceptions: Set[Exception])</textarea>
+    </p>
+        
+        <ul>
+        <li>Wenn mehr als eine Exception auftritt, dann wird in <code>CompositeThrowable</code> ge-„wrappt“</li>
+        <li>Hört sich völlig plausibel an, aber ...<br /> <strong>Komplett nicht-deterministisches Exception-Handling!</strong></li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left pink slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Parallele Albträume</h1>
+        
+        <ul>
+        <li><p>Hört sich völlig plausibel an, aber ...<br /> <strong>Komplett nicht-deterministisches Exception-Handling!</strong></p></li>
+        <li><p>Anzahl der Exceptions?</p></li>
+        <li>Typ der Exception?</li>
+        <li>Falsche Tests?</li>
+        <li>Reproduzierbarkeit?</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='pink slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1><br/><strong>Fazit</strong><br/>Genaue Spezifikation ist überlebenswichtig!<br/><br/></h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='pink slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1><br/><strong>Fazit</strong><br/>Was ist das einfachste, was funktionieren könnte?<br/><br/></h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='orange slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Was kann man daraus lernen?</h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Basics</h1>
+        
+        <ul>
+        <li>(Verteilte) Versionskontrolle</li>
+        <li>Bugtracking</li>
+        <li>Test-Suites</li>
+        <li>Continuous Integration</li>
+        <li>Reviews und Coding-Standards</li>
+        <li>Spezifikation</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Fehlerbehebung</h1>
+        
+        <p><img src="images/ducttape.png"/></p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Fehlerbehebung</h1>
+        
+        <ul>
+        <li>Wird in Sprachen unterschiedlich gehandhabt</li>
+        <li>Problem: Binär- und Sourcekompatibilität</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
       <div class='spacer top'></div>
       <div class='content'>
         <h1>Kompatibilität</h1>
         
         <ul>
-        <li><p><strong>Code-</strong> oder <strong>Binär</strong>kompatibilität?</p></li>
-        <li><p>PHP:</p></li>
-        <li>C++:</li>
-        <li>Java: Never change anything ever!</li>
-        <li>C#:</li>
-        <li><p>Python: “where code goes to die”</p></li>
-        <li><p>Mit der Zeit stabiler oder weniger stabil?</p></li>
-        <li>Xamarin</li>
-        <li>MiMa</li>
-        </ul>
-      </div>
-      <div class='spacer bottom'></div>
-    </section>
-    <section class='left slide top'>
-      <div class='spacer top'></div>
-      <div class='content'>
-        <h1>Scala Improvement Process</h1>
+        <li><strong>Code-</strong> oder <strong>Binär</strong>kompatibilität?
         
         <ul>
-        <li><p>Je nach Größe der Änderung/Verbesserung sind manchmal verschiedene Prozesse notwendig</p></li>
-        <li><p>String Interpolation (<a href="https://docs.google.com/document/d/1NdxNxZYodPA-c4MLr33KzwzKFkzm9iW9POexT9PkJsU/edit?hl=en_US">SIP-11</a>)</p></li>
-        <li>Implicit Classes (<a href="http://docs.scala-lang.org/sips/pending/implicit-classes.html">SIP-13</a>)</li>
-        <li>Futures and Promises (<a href="http://docs.scala-lang.org/sips/pending/futures-promises.html">SIP-14</a>)</li>
-        <li>Value Classes (<a href="https://docs.google.com/document/d/10TQKgMiJTbVtkdRG53wsLYwWM2MkhtmdV25-NZvLLMA/edit?hl=en_US">SIP-15</a>)</li>
-        <li>Macros (experimental, <a href="http://docs.scala-lang.org/overviews/macros/overview.html">SIP-16</a>)</li>
-        <li>trait Dynamic (<a href="https://docs.google.com/document/d/1XaNgZ06AR7bXJA9-jHrAiBVUwqReqG4-av6beoLaf3U/edit">SIP-17</a>)</li>
-        <li>Feature Imports (<a href="https://docs.google.com/document/d/1nlkvpoIRkx7at1qJEZafJwthZ3GeIklTFhqmXMvTX9Q/edit">SIP-18</a>)</li>
-        <li><p>Reflection (experimental, <a href="http://docs.scala-lang.org/overviews/reflection/overview.html">overview</a>)</p></li>
-        <li><p>Rewritten Pattern Matcher</p></li>
+        <li>Java: “Never change anything, ever!”</li>
+        <li>C#: “It depends”</li>
+        <li>Python: “Where code goes to die”</li>
+        <li>PHP: — No comment —</li>
+        </ul>
+        </li>
         </ul>
       </div>
       <div class='spacer bottom'></div>
     </section>
-    <section class='slide'>
+    <section class='left orange slide top'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Thanks!</h1>
+        <h1>Kompatibilität</h1>
+        
+        <ul>
+        <li>Minor- und Update-Releases sind source- und binärkompatibel</li>
+        <li>Major-Releases sind <strong>nicht</strong> binärkompatibel</li>
+        <li>Wie kann man diese Anforderungen garantieren?</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Scala-Policy</h1>
+        
+        <ul>
+        <li>Muss mindestens 1 Major-Release lang als veraltet gekennzeichnet sein</li>
+        <li>Beispiel:
+        
+        <ul>
+        <li>Problem wird in 2.9 erkannt</li>
+        <li>Deprecated in 2.10</li>
+        <li>Entfernt/behoben in 2.11</li>
+        </ul>
+        </li>
+        <li><strong>Keine Regel passt für alle Projekte!</strong></li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kompatibilität</h1>
+        
+        <p><img src="images/migration-manager.png"/></p>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        
+        <ul>
+        <li><code>scala.mobile</code>: Seit 5 Jahren kaputt</li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        <textarea class='code' display='none' mode='text/x-scala'>/** A basic pretty-printing library, based&#x000A;  * on Lindig's strict version of Wadler's&#x000A;  * adaptation of Hughes' pretty-printer.&#x000A;  */&#x000A;abstract class Document</textarea>
+    </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        <textarea class='code' display='none' mode='text/x-scala'>/** This class turns a regular expression&#x000A;  * over `A` into a `NondetWordAutom` over&#x000A;  * `A` using the celebrated position&#x000A;  * automata construction (also called &#x000A;  * ''Berry-Sethi'' or ''Glushkov'').&#x000A;  */&#x000A;abstract class BaseBerrySethi</textarea>
+    </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        <textarea class='code' display='none' mode='text/x-scala'>/** NondetWordAutom, Berry-Sethi, Glushkov</textarea>
+    </li>
+        </ul>
+        
+        
+        <br/>
+        
+        
+        <ul>
+        <li>Auswirkungen</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        <textarea class='code' display='none' mode='text/x-scala'>/** NondetWordAutom, Berry-Sethi, Glushkov</textarea>
+    </li>
+        </ul>
+        
+        
+        <br/>
+        
+        
+        <ul>
+        <li>Auswirkungen</li>
+        <li>Abhängigkeiten</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        <textarea class='code' display='none' mode='text/x-scala'>/** NondetWordAutom, Berry-Sethi, Glushkov</textarea>
+    </li>
+        </ul>
+        
+        
+        <br/>
+        
+        
+        <ul>
+        <li>Auswirkungen</li>
+        <li>Abhängigkeiten</li>
+        <li>Alternativen</li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Kriterien</h1>
+        
+        <ul>
+        <li>Qualität
+        <textarea class='code' display='none' mode='text/x-scala'>/** NondetWordAutom, Berry-Sethi, Glushkov</textarea>
+    </li>
+        </ul>
+        
+        
+        <br/>
+        
+        
+        <ul>
+        <li>Auswirkungen</li>
+        <li>Abhängigkeiten</li>
+        <li>Alternativen
+        
+        <ul>
+        <li><code>scala.actors</code> → Akka Aktoren</li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Deprecation</h1>
+        
+        <ul>
+        <li>Versionierung
+        <textarea class='code' display='none' mode='text/x-scala'>@deprecated("Use `Foo` instead.", "2.10")&#x000A;class Bar</textarea>
+    </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Deprecation</h1>
+        
+        <ul>
+        <li>Versionierung</li>
+        <li>Präzision
+        
+        <ul>
+        <li>Vererbung
+        <textarea class='code' display='none' mode='text/x-scala'>@deprecatedInheritance(&#x000A;  "`Bar` will be made final.", "2.10")&#x000A;class Bar</textarea>
+    </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Deprecation</h1>
+        
+        <ul>
+        <li>Versionierung</li>
+        <li>Präzision
+        
+        <ul>
+        <li>Vererbung</li>
+        <li>Parameternamen
+        <textarea class='code' display='none' mode='text/x-scala'>def blubb(foo: Int)</textarea>
+    </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Deprecation</h1>
+        
+        <ul>
+        <li>Versionierung</li>
+        <li>Präzision
+        
+        <ul>
+        <li>Vererbung</li>
+        <li>Parameternamen
+        <textarea class='code' display='none' mode='text/x-scala'>def blubb(@deprecatedName('foo)&#x000A;          fuz: Int)</textarea>
+    </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Deprecation</h1>
+        
+        <ul>
+        <li>Versionierung</li>
+        <li>Präzision
+        
+        <ul>
+        <li>Vererbung</li>
+        <li>Parameternamen</li>
+        <li>Überschreiben
+        <textarea class='code' display='none' mode='text/x-scala'>class Blubb {&#x000A;  def bla = ???&#x000A;}</textarea>
+    </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Deprecation</h1>
+        
+        <ul>
+        <li>Versionierung</li>
+        <li>Präzision
+        
+        <ul>
+        <li>Vererbung</li>
+        <li>Parameternamen</li>
+        <li>Überschreiben
+        <textarea class='code' display='none' mode='text/x-scala'>class Blubb {&#x000A;  @deprecatedOverriding(&#x000A;    "`bla` will become final.", "2.10")&#x000A;  def bla = ???&#x000A;}</textarea>
+    </li>
+        </ul>
+        </li>
+        </ul>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='left orange slide top'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Resultate</h1>
+        
+        <p><strong>?</strong> Procedures</p>
+        
+        <p>✔ Oktale Literale</p>
+        
+        <p><strong>?</strong> Oktale Escapes</p>
+        
+        <p><strong>?</strong> Constant inlining</p>
+        
+        <p>✔ <code>Future</code>s</p>
+        
+        <p>✔ <code>ListBuffer</code></p>
+        
+        <p>✔ <code>CompositeThrowable</code></p>
       </div>
       <div class='spacer bottom'></div>
     </section>
     <section class='slide'>
       <div class='spacer top'></div>
       <div class='content'>
-        <h1>Questions!</h1>
+        <h1>Danke!</h1>
+      </div>
+      <div class='spacer bottom'></div>
+    </section>
+    <section class='slide'>
+      <div class='spacer top'></div>
+      <div class='content'>
+        <h1>Fragen?</h1>
       </div>
       <div class='spacer bottom'></div>
     </section>

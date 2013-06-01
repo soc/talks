@@ -40,6 +40,36 @@
   padding-bottom: 10px;
 }
 
+.keydown.deck-container .green h1 {
+  background-color: #5c951b;
+  border-right: 2000px solid #5c951b;
+  border-left: 2000px solid #5c951b;
+}
+
+.keydown.deck-container .purple h1 {
+  background-color: #5c1b95;
+  border-right: 2000px solid #5c1b95;
+  border-left: 2000px solid #5c1b95;
+}
+
+.keydown.deck-container .pink h1 {
+  background-color: #951b5c;
+  border-right: 2000px solid #951b5c;
+  border-left: 2000px solid #951b5c;
+}
+
+.keydown.deck-container .red h1 {
+  background-color: #A10A00;
+  border-right: 2000px solid #A10A00;
+  border-left: 2000px solid #A10A00;
+}
+
+.keydown.deck-container .orange h1 {
+  background-color: #c9551b;
+  border-right: 2000px solid #c9551b;
+  border-left: 2000px solid #c9551b;
+}
+
 .keydown.deck-container h1 {
   font-family: 'Source Sans Pro', sans-serif;
   color: white;
